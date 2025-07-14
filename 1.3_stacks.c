@@ -11,8 +11,8 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define INITIAL_CAPACITY 4
-#define RESIZE_FACTOR 2
+#define STACK_INITIAL_CAPACITY 4
+#define STACK_RESIZE_FACTOR 2
 
 typedef struct stack {
   void *items;
@@ -46,7 +46,7 @@ void stack_push(stack *s, void *item) {
   }
 
   if (s->capacity == 0) {
-    s->capacity = INITIAL_CAPACITY;
+    s->capacity = STACK_INITIAL_CAPACITY;
     s->items = malloc(s->item_size * s->capacity);
     if (s->items == NULL) {
       fprintf(stderr, "Cannot allocate memory for stack");
@@ -55,7 +55,7 @@ void stack_push(stack *s, void *item) {
   }
 
   if (s->count == s->capacity) {
-    unsigned int new_capacity = s->capacity * RESIZE_FACTOR;
+    unsigned int new_capacity = s->capacity * STACK_RESIZE_FACTOR;
     void *new_items = realloc(s->items, s->item_size * new_capacity);
     if (new_items == NULL) {
       fprintf(stderr, "Cannot re-allocate memory for stack");
@@ -86,11 +86,11 @@ void stack_pop(stack *s, void *item) {
          s->item_size);
   s->count--;
 
-  if (s->count < (s->capacity / RESIZE_FACTOR)) {
-    unsigned int new_capacity = s->capacity / RESIZE_FACTOR;
+  if (s->count < (s->capacity / STACK_RESIZE_FACTOR)) {
+    unsigned int new_capacity = s->capacity / STACK_RESIZE_FACTOR;
 
-    if (new_capacity < INITIAL_CAPACITY) {
-      new_capacity = INITIAL_CAPACITY;
+    if (new_capacity < STACK_INITIAL_CAPACITY) {
+      new_capacity = STACK_INITIAL_CAPACITY;
       return;
     }
 

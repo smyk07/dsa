@@ -12,8 +12,8 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define INITIAL_CAPACITY 4
-#define RESIZE_FACTOR 2
+#define DA_INITIAL_CAPACITY 4
+#define DA_RESIZE_FACTOR 2
 
 typedef struct dynamic_array {
   void *items;
@@ -75,7 +75,7 @@ int da_append(dynamic_array *da, void *item) {
   }
 
   if (da->capacity == 0) {
-    da->capacity = INITIAL_CAPACITY;
+    da->capacity = DA_INITIAL_CAPACITY;
     da->items = malloc(da->item_size * da->capacity);
     if (!da->items) {
       perror("Failed to allocate dynamic array.\n");
@@ -84,7 +84,7 @@ int da_append(dynamic_array *da, void *item) {
   }
 
   if (da->count == da->capacity) {
-    unsigned int new_capacity = da->capacity * RESIZE_FACTOR;
+    unsigned int new_capacity = da->capacity * DA_RESIZE_FACTOR;
     void *new_items = realloc(da->items, da->item_size * new_capacity);
     if (!new_items) {
       perror("Failed to resize dynamic array.\n");
@@ -111,7 +111,7 @@ int da_insert_item(dynamic_array *da, unsigned int index, void *item) {
   }
 
   if (da->count == da->capacity) {
-    unsigned int new_capacity = da->capacity * RESIZE_FACTOR;
+    unsigned int new_capacity = da->capacity * DA_RESIZE_FACTOR;
     void *new_items = realloc(da->items, da->item_size * new_capacity);
     if (!new_items) {
       perror("Failed to resize dynamic array.\n");
