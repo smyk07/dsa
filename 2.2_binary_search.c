@@ -8,7 +8,7 @@
 #include <stdio.h>
 
 // Recursive
-int binary_search(int *arr, int low, int high, int search_key) {
+int binary_search_r(int *arr, int low, int high, int search_key) {
   if (low > high)
     return -1;
 
@@ -23,10 +23,9 @@ int binary_search(int *arr, int low, int high, int search_key) {
     high = mid;
   }
 
-  return binary_search(arr, low, high, search_key);
+  return binary_search_r(arr, low, high, search_key);
 }
 
-/*
 // while-loop
 int binary_search(int *arr, int low, int high, int search_key) {
   while (low <= high) {
@@ -43,7 +42,6 @@ int binary_search(int *arr, int low, int high, int search_key) {
 
   return -1;
 }
-*/
 
 int main() {
   int array[] = {0,  1,  2,  3,  5,  6,  7,  8,  9,  10, 11, 12, 13, 14, 15,
