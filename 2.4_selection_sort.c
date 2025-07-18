@@ -7,6 +7,15 @@
 
 #include <stdio.h>
 
+#ifndef swap //(x, y)
+#define swap(x, y)                                                             \
+  {                                                                            \
+    int temp = x;                                                              \
+    x = y;                                                                     \
+    y = temp;                                                                  \
+  }
+#endif /* ifndef swap(x, y) */
+
 void selection_sort(int *arr, unsigned int len) {
   for (int i = 0; i < len; i++) {
     int min = i;
@@ -17,9 +26,7 @@ void selection_sort(int *arr, unsigned int len) {
     }
 
     if (min != i) {
-      arr[i] ^= arr[min];
-      arr[min] ^= arr[i];
-      arr[i] ^= arr[min];
+      swap(arr[i], arr[min])
     }
   }
 }

@@ -7,13 +7,20 @@
 
 #include <stdio.h>
 
+#ifndef swap //(x, y)
+#define swap(x, y)                                                             \
+  {                                                                            \
+    int temp = x;                                                              \
+    x = y;                                                                     \
+    y = temp;                                                                  \
+  }
+#endif /* ifndef swap(x, y) */
+
 void bubble_sort(int *arr, unsigned int len) {
   for (int i = 0; i < len; i++) {
     for (int j = 0; j < len - i - 1; j++) {
       if (arr[j] > arr[j + 1]) {
-        arr[j] ^= arr[j + 1];
-        arr[j + 1] ^= arr[j];
-        arr[j] ^= arr[j + 1];
+        swap(arr[j], arr[j + 1])
       }
     }
   }

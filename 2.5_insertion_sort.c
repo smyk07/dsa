@@ -1,12 +1,26 @@
+/*
+ * @file: 2.5_insertion_sort.c
+ * @brief: Implements a simple insertion sort algorithm.
+ * @compile: "clang -g -o 2.5_insertion_sort 2.5_insertion_sort.c"
+ * @run: "./2.5_insertion_sort"
+ */
+
 #include <stdio.h>
+
+#ifndef swap //(x, y)
+#define swap(x, y)                                                             \
+  {                                                                            \
+    int temp = x;                                                              \
+    x = y;                                                                     \
+    y = temp;                                                                  \
+  }
+#endif /* ifndef swap(x, y) */
 
 void insertion_sort(int *arr, int len) {
   for (int i = 1; i < len; i++) {
     int j = i;
     while (j > 0 && arr[j - 1] > arr[j]) {
-      arr[j] ^= arr[j - 1];
-      arr[j - 1] ^= arr[j];
-      arr[j] ^= arr[j - 1];
+      swap(arr[j], arr[j - 1]);
       j--;
     }
   }
