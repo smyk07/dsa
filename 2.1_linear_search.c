@@ -1,3 +1,10 @@
+/*
+ * @file: 2.1_linear_search.c
+ * @brief: Implements a simple linear search algorithm.
+ * @compile: "clang -g -o 2.1_linear_search 2.1_linear_search.c"
+ * @run: "./2.1_linear_search"
+ */
+
 #include <stdio.h>
 
 int linear_search(int *arr, int len, int search_key) {

@@ -1,3 +1,10 @@
+/*
+ * @file: 2.2_binary_search.c
+ * @brief: Implements a simple binary search algorithm.
+ * @compile: "clang -g -o 2.2_binary_search 2.2_binary_search.c"
+ * @run: "./2.2_binary_search"
+ */
+
 #include <stdio.h>
 
 // Recursive
